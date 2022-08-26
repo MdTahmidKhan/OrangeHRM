@@ -4,7 +4,7 @@ public class PIMtest extends TestBase{
     @Test
     public void test01() {
         startLoginPage()
-                .loginPIM()
+                .loginToPIMPage()
                 .searchEmployeeId("0083")
                 .validateFirstAndLastName("Joe", "Root");
 
