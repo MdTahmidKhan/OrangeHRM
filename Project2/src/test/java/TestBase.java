@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
+import pages.Login;
 
 import java.time.Duration;
 
@@ -22,8 +22,8 @@ public class TestBase {
         //driver.close();
         //driver.quit();
     }
-    public LoginPage startLoginPage(){
-        return PageFactory.initElements(driver, LoginPage.class);
+    public Login startLoginPage(){
+        return PageFactory.initElements(driver, Login.class);
 
     }
 }

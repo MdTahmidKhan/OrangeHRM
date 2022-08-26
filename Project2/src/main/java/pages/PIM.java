@@ -10,8 +10,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class PIMpage {
-    WebDriver driver = Browser.driver;
+public class PIM {WebDriver driver = Browser.driver;
 
     @FindBy(linkText = "Recruitment") private WebElement recruitmentLink;
     @FindBy(css = "button[type='submit']") private WebElement submitButton;
@@ -19,6 +18,7 @@ public class PIMpage {
     private WebElement firstNameElement;
     @FindBy(xpath = "//div[@class=\"oxd-table-row oxd-table-row--with-border oxd-table-row--clickable\"]/div[4]/div")
     private WebElement lastNameElement;
+    @FindBy(linkText = "Admin") private WebElement adminLink;
 
 
 
@@ -27,17 +27,23 @@ public class PIMpage {
         return PageFactory.initElements(Browser.driver, Recruitment.class);
     }
 
-    public PIMpage searchEmployeeId(String id) {
+    public PIM searchEmployeeId(String id) {
         List<WebElement> elements = driver.findElements(By.cssSelector(".oxd-input.oxd-input--active"));
         elements.get(1).sendKeys(id);
         submitButton.click();
         return this;
     }
 
-    public PIMpage validateFirstAndLastName(String firstName, String lastName) {
+    public PIM validateFirstAndLastName(String firstName, String lastName) {
 
         Assert.assertEquals(firstNameElement.getText(), firstName);
         Assert.assertEquals(lastNameElement.getText(), lastName);
         return this;
+    }
+
+    public Admin navigateToAdminPage() {
+        adminLink.click();
+        return PageFactory.initElements(Browser.driver, Admin.class);
+
     }
 }
